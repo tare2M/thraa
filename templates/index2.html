@@ -1,0 +1,235 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+
+    <py-env>
+        - matplotlib
+    </py-env>
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BIA Project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+
+        </div>
+    </nav>
+    <h1 class="text-white bg-dark text-center p-3"> KnapSack Problem by Genetic Algorithem </h1>
+    <h2 class="text-white bg-dark text-center p-3">Create Your Own Problem</h2>
+    <form action="/insert" method="post">
+        {% csrf_token%}
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col-md-2">
+
+                    <br />
+
+                    <h5 style="text-align:center"> Max Generation Number </h5>
+                    <div class="form-group">
+                        <input type="number" class="form-control" value="100" min="0" style="text-align:center" name="name" required>
+                    </div>
+                    <br />
+                    <h5 style="text-align:center"> Bag Capacity</h5>
+                    <div class="form-group">
+                        <input type="number" class="form-control" value="22" min="0" style="text-align:center" name="capacity" required>
+                    </div>
+                    <br />
+                    <h5 style="text-align:center"> Population Number </h5>
+                    <div class="form-group">
+                        <input type="number" class="form-control" style="text-align:center" min="0" value="100" name="popN" required>
+                    </div>
+                    <br />
+                    <h5 style="text-align:center"> Mutation Rate % </h5>
+                    <div class="form-group">
+                        <input type="number" step="0.1" class="form-control" min="0" max="1" value="0.2" style="text-align:center" name="MRate" required>
+                    </div>
+                    <br />
+
+
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-success" type="submit">Submit</button>
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <br />
+                    <h6 style="text-align:center"> Enter the Weight & Value for Each of The 7 Items</h6>
+                    <table class="table table-active" style="text-align:center">
+                        <thead class="table-dark">
+                            <tr class="table-active">
+                                <th scope="row"> # </th>
+                                <td colspan="2" class="table-active">The weight</td>
+                                <td>the Value </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr class="table-active">
+                                <th scope="row">1 </th>
+                                <td colspan="2" class="table-active"><input type="number" min="0" style="text-align:center" class="form-control" placeholder="Enter Weight" name="W1" value="5" required></td>
+                                <td><input type="number" class="form-control" min="0" style="text-align:center" placeholder="Enter Value " name="V1" value="7" required></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td colspan="2" class="table-active"><input type="number" min="0" style="text-align:center" class="form-control" placeholder="Enter Weight" value="8" name="W2" required></td>
+                                <td><input type="number" class="form-control" min="0" placeholder="Enter Value " style="text-align:center" name="V2" value="8" required></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2" class="table-active"><input type="number" min="0" class="form-control" style="text-align:center" placeholder="Enter Weight" name="W3" value="3" required></td>
+                                <td><input type="number" class="form-control"  min="0" placeholder="Enter Value " style="text-align:center" name="V3" value="4" required></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">4</th>
+                                <td colspan="2" class="table-active"><input type="number" min="0" class="form-control" style="text-align:center" placeholder="Enter Weight" name="W4" value="2" required></td>
+                                <td><input type="number" class="form-control" min="0" placeholder="Enter Value " style="text-align:center" name="V4" value="10" required></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">5</th>
+                                <td colspan="2" class="table-active"><input type="number" min="0" class="form-control" style="text-align:center" placeholder="Enter Weight" name="W5" value="7" required></td>
+                                <td><input type="number" class="form-control" min="0" placeholder="Enter Value " style="text-align:center" name="V5" value="4" required></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">6</th>
+                                <td colspan="2" class="table-active"><input type="number" min="0" style="text-align:center" class="form-control" placeholder="Enter Weight" name="W6" value="9" required></td>
+                                <td><input type="number" class="form-control" min="0" placeholder="Enter Value " style="text-align:center" name="V6" value="6" required></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">7</th>
+                                <td colspan="2" class="table-active"><input type="number" min="0" class="form-control" style="text-align:center" placeholder="Enter Weight" name="W7" value="4" required></td>
+                                <td><input type="number" class="form-control" min="0" placeholder="Enter Value " style="text-align:center" name="V7" value="4" required></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+                <script>
+                    includeHTML();
+                </script>
+
+
+                <div class="col-md-7">
+                    
+                    {% block content %}
+
+                    {% if chart %}
+                    <img src="data:image/png;base64, {{chart|safe}}" />
+                    {% endif %}
+
+                    {% endblock content %}
+                    <div>
+                        {% for c in C %}
+                        <center> <h6 style="text-align:center">{{c}}</h6></center>
+                        {% endfor %}
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+    <div class="row" style="background-color:#FF6347;">
+        <div class="col-sm-12" style="font-family:'Comic Sans MS'; font-size: 40px;">
+            <center>
+                <h1
+                    {% for c in  Dyn_R  %}
+                    <center> {{c|safe}}</center>
+                    {% endfor %}
+                </h1>
+            </center>
+
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-light">
+        <div class="container-fluid" style="text-align:center">
+             The Results of Genetic Algorithm & Dynamic Algorithm Problem will Show Up Here After You Hit Submit! </center>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            The Details of Genetic Algorithm Problem will You after you Hit Enter!
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <div class="row">
+
+            <center>
+                <div class="col-md-4">
+                    {% for c in inputs %}
+                    <center> <h6 style="text-align:center">{{c|safe}}</h6></center>
+                    {% endfor %}
+                </div>
+
+                <div class="col-md-5">
+
+                    {% for E in entrys %}
+                    <center> <h6 style="text-align:center">{{E|safe}}</h6></center>
+                    {% endfor %}
+                </div>
+
+
+        </div>
+        </center>
+        <div class="container mt-6">
+            <div class="row">
+                <div class="col-md-4">
+                    <fieldset>
+                        <br />
+
+                        <div>
+                            {% for c in Gens %}
+                            <h5 style="text-align:center">
+                                {{c}}
+                            </h5>
+                            {% endfor %}
+                        </div>
+                    </fieldset>
+
+                </div>
+                <div class="col-md-8">
+                    <fieldset>
+                        <br />
+
+                        <div>
+                            {% for c in Genetations %}
+                            <h5 style="text-align:center">
+                                {{c}}
+                            </h5>
+                            {% endfor %}
+                        </div>
+                    </fieldset>
+
+                </div>
+                {% if state_name %}
+                <div class="col-sm-10 mt-5 ml-2 mb-4">
+                    <h1 style="font-family:'Comic Sans MS';"><center>{{state_name|safe}}</center></h1>
+                </div>
+                {% endif %}
+
+                <div class="row">
+
+                </div>
+            </div>
+        </div>
+        <h1 class="text-white bg-dark text-center p-3"><center>BIA601 Project for Syria Virual Univirsity made by <br/> Thraa Madwar & Lojain Alnamat </h1>
+        <h1 class="text-white bg-dark text-center p-3"><center>Thraa_121858 & Lojain_110965 Alnamat </h1>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
